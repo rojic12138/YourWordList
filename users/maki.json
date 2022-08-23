@@ -1,0 +1,9 @@
+{
+    "name": "maki",
+    "person_id": 1,
+    "password": "123456",
+    "email": "",
+    "word_list": ["abase"],
+    "memoried_word_list": [],
+    "mastered_word_list": []
+}
