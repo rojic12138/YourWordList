@@ -1,0 +1,38 @@
+{
+    "word": "abase",
+    "id": 2,
+    "pronunciation_path": "audio\\abase.mp3",
+    "definitions": [
+        {
+            "meaning": "to lower in rank, office, prestige, or esteem ",
+            "example": [
+                "abase oneself",
+                "\u2026 the shame that had abased him within and without \u2026  \u2014 James Joyce"
+            ]
+        },
+        {
+            "meaning": "to lower physically ",
+            "example": [
+                "As we enter among them the great elephant makes us a bow in the best style of elephantine courtesy, bending lowly down his mountain bulk, with trunk abased and leg thrust out behind.  \u2014 Nathaniel Hawthorne"
+            ]
+        }
+    ],
+    "synonyms_and_antonyms": [
+        {
+            "meaning": "cause to feel shame; hurt the pride of",
+            "synonyms": [
+                "humiliate",
+                "mortify",
+                "chagrin",
+                "humble",
+                "abase"
+            ],
+            "antonyms": []
+        }
+    ],
+    "personal_translations": {
+        "0": "\u964d\u4f4e(\u5730\u4f4d\u3001\u804c\u4f4d\u3001\u5a01\u671b\u6216\u5c0a\u4e25)",
+        "1": "\u964d\u4f4e"
+    },
+    "hints": []
+}
