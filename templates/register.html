@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{%block title %} Register {%endblock%}
+{%block head %}
+    <ul class="right hide-on-med-and-down">
+        <li><a href="/login">Login</a></li>
+    </ul>
+    <ul class="right hide-on-med-and-down">
+        <li><a href="/register">Register</a></li>
+    </ul>
+{%endblock%}
+{%block content%}
+    <h1 class="header center orange-text">Register</h1>
+    <p class="center light">Get an account for free forever! </p>
+    {% with messages = get_flashed_messages() %}
+        <div class="center">{{ messages[0] }}</div>
+        <div class="center">{{ messages[1] }}</div>
+    {% endwith %}
+
+    <form class="center" action="{{ url_for('register') }}" method="POST">
+        <input class="center" type="text" name="username" id="username" placeholder="Username"></input>
+        <input class="center" type="password" name="password" id="password" placeholder="Password"></input>
+        <input class="center" type="text" name="email" id="email" placeholder="Email(optional)"></input>
+        <input class="center light-blue-text" type="submit" name="submit" value="submit"></input>
+    </form>
+{%endblock%}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>Register-Your Word List</title>
+</head>
+
+<h1>Register</h1>
+{% with messages = get_flashed_messages() %}
+    <div>{{ messages[0] }}</div>
+    <div>{{ messages[1] }}</div>
+{% endwith %}
+
+<form action="{{ url_for('register') }}" method="POST">
+    <input type="text" name="username" id="username" placeholder="Username"></input>
+    <input type="password" name="password" id="password" placeholder="Password"></input>
+    <input type="text" name="email" id="email" placeholder="Email(optional)"></input>
+    <input type="submit" name="submit"></input>
+</form>
+</html> -->

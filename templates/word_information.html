@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{%block title %} {{word}} {%endblock%}
+
+{%block content %}
+
+    {% with messages = get_flashed_messages() %}
+    <p class="center light-orange-text">{{ messages[0] }}</p>
+    {% endwith %}
+
+    {%if word_num!=0  %}
+    <p class="center light">{{i+1}}/{{word_num}} word</p>
+    {%endif%}
+
+    <h1 class="header center">{{word}}</h1>
+    
+    <h4 class="center" >
+    <audio controls controlsList="nodownload">
+        <source src="{{ pronunciation_path}} " type="audio/mp3">
+    </audio>
+    </h4>
+
+    <form class="center" method="POST">
+        <input class="center light" contenteditable = "true" name="annotation" value='{{translation }}'
+        onclick="document.getElementById('annotation_listener').style.visibility='visible'" >
+        <input class="center light-blue-text" id="annotation_listener" type="submit" name="change_annotation" value="change your annotation"
+            style="visibility: hidden"></input>
+    </form>
+
+
+    <h3 class="header orange-text"> meanings </h3>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>no.</th>
+                <th>meaning</th>
+                <th>example</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for i in range(definitions|length) %}
+            <tr>
+                <th>{{i+1}}</th>
+                <th>{{definitions[i]['meaning']}}</th>
+                <th>
+                {%for j in range(definitions[i]['example']|length) %}
+                    <li>{{definitions[i]['example'][j]}}</li>
+                {%endfor%}
+                </th>
+            </tr>   
+            {%endfor%}
+        </tbody>
+    </table>
+    
+    {%if synonyms_and_antonyms|length!=0 %}
+    <h3 class="header orange-text"> synonyms and antonyms </h3>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>meaning</th>
+                <th>synonyms</th>
+                <th>antonyms</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for i in range(synonyms_and_antonyms|length) %}
+                {%if not (synonyms_and_antonyms[i]['synonyms']|length==1 and synonyms_and_antonyms[i]['antonyms']|length==0) %}
+                <tr>
+                    <th>{{synonyms_and_antonyms[i]['meaning']}}</th>
+                    <th>                
+                        {%for j in range(synonyms_and_antonyms[i]['synonyms']|length) %}
+                            <li>{{synonyms_and_antonyms[i]['synonyms'][j]}}</li>
+                        {%endfor%}
+                    </th>
+                    <th>
+                        {%for j in range(synonyms_and_antonyms[i]['antonyms']|length) %}
+                            <li>{{synonyms_and_antonyms[i]['antonyms'][j]}}</li>
+                        {%endfor%}  
+                    </th>
+                </tr>   
+                {%endif%}  
+            {%endfor%}
+        </tbody>
+    </table>
+    {%endif%}
+
+    {% if hints|length!=0 %}
+    <h3 class="header orange-text"> hints </h3>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>short hint </th>
+                <th>long hint</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {%for i in range(hints|length) %}
+                    <th> {{hints[i]}}</th>
+                {%endfor%}
+            </tr>
+        </tbody>
+    </table>
+    {%endif%}
+
+    <br />
+
+    <form class="center" method="POST">
+        <input class="center light-blue-text" type="submit" name="forget" value="forget"></input>
+        <input class="center light-blue-text" type="submit" name="memoried" value="memoried"></input>
+        <input class="center light-blue-text" type="submit" name="mastered" value="mastered"></input>
+    </form>
+
+{%endblock%}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>{{word}}</title>
+</head>
+<body>
+    {%if word_num!=0  %}
+        <p align="center">{{i+1}}/{{word_num}} word</p>
+    {%endif%}
+
+    <h1 align="center">{{word}}</h1>
+    <audio controls>
+        <source src="{{ pronunciation_path}} ">
+    </audio>
+    <p align="center">{{translation }}</p>
+
+    <h2> meanings </h2>
+    {%for i in range(definitions|length) %}
+        <p align="center">meaning {{i+1}}: {{definitions[i]['meaning']}}</p>
+        {%for j in range(definitions[i]['example']|length) %}
+            <li align="center">{{definitions[i]['example'][j]}}</li>
+        {%endfor%}
+    {%endfor%}
+
+    
+    <h2> synonyms and antonyms </h2>
+    {%for i in range(synonyms_and_antonyms|length) %}
+        {%if not (synonyms_and_antonyms[i]['synonyms']|length==1 and synonyms_and_antonyms[i]['antonyms']|length==0) %}
+            <p align="center">meaning: {{synonyms_and_antonyms[i]['meaning']}}</p>
+            {%if synonyms_and_antonyms[i]['synonyms']|length!=1 %}
+                <p>synonyms:</p>
+                {%for j in range(synonyms_and_antonyms[i]['synonyms']|length) %}
+                    <li align="center">{{synonyms_and_antonyms[i]['synonyms'][j]}}</li>
+                {%endfor%}
+            {%endif%}
+            {%if synonyms_and_antonyms[i]['antonyms']|length!=0 %}
+                <p>antonyms:</p>
+                {%for j in range(synonyms_and_antonyms[i]['antonyms']|length) %}
+                    <li align="center">{{synonyms_and_antonyms[i]['antonyms'][j]}}</li>
+                {%endfor%}
+            {%endif%}
+        {%endif%}
+    {%endfor%}
+
+    <h2> hints </h2>
+    {%for i in range(hints|length) %}
+        <p align="center"> {{hints[i]}}</p>
+    {%endfor%}
+
+    <form method="POST">
+        <input type="submit" name="forget" value="forget"></input>
+        <input type="submit" name="memoried" value="memoried"></input>
+        <input type="submit" name="mastered" value="mastered"></input>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        <div>{{ messages[0] }}</div>
+    {% endwith %}
+</body>
+</html> -->

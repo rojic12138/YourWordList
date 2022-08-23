@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{%block title %} Profile {%endblock%}
+{%block content%}
+    <h1 class="header center orange-text"> Welcome, {{data["name"]}}!</h1>
+    <div class="row">
+        <div class="col s12 m4">
+            <div class="center"> You have mastered {{data["mastered_word_list"]|length}} words.</div>
+            <div class="center"> You will not see these words in your list anymore.</div>
+        </div>
+        <div class="col s12 m4">
+        <div class="center"> You have memoried {{data["memoried_word_list"]|length}} words. </div>
+            <div class="center"> You will see these words less frequently.</div>
+        </div>
+        <div class="col s12 m4">
+        <div class="center"> There are still {{data["word_list"]|length}} words to be memoried.</div>
+        </div>
+    </div>
+    {% with messages = get_flashed_messages() %}
+        <div class="center light-blue-text">{{ messages[0] }}</div>
+        <div class="center light-blue-text">{{ messages[1] }}</div>
+        <div class="center light-blue-text">{{ messages[2] }}</div>
+    {% endwith %}
+
+    <p class="center light">Click <a href="/add_words">here</a> to add new words!</p>
+
+    {% if change==False %}
+    <p class="center light">Click this to change your username, password or email ↓</p>
+    <div> </div>
+    <form class="center" action="/profile" method="post" >
+        <input class="center light-blue-text" type="submit" name="change" value="change profile">
+    </form>
+
+    {% else %}
+    <p  class="center light">Change your username, password or email here.</p>
+    <form class="center" method="POST">
+        <input class="center" type="text" name="username" id="username" value="{{data['name']}}"></input>
+        <input class="center" type="password" name="password" id="password" value="{{data['password']}}"></input>
+        <input class="center" type="text" name="email" id="email" value="{{data['email']}}"></input>
+        <input class="center light-blue-text" type="submit" name="submit"></input>
+    </form>
+    {%endif%}
+{%endblock%}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>{{data["name"]}}'s profile</title>
+</head>
+
+<body>
+    <h1> Welcome, {{data["name"]}}!</h1>
+    <p> You have mastered {{data["mastered_word_list"]|length}} words. You will not see these words in your list anymore.</p>
+    <p> You have memoried {{data["memoried_word_list"]|length}} words. You will see these words less frequently.</p>
+    <p> There are still {{data["word_list"]|length}} words to be memoried.</p>
+
+    {% with messages = get_flashed_messages() %}
+        <div>{{ messages[0] }}</div>
+        <div>{{ messages[1] }}</div>
+        <div>{{ messages[2] }}</div>
+    {% endwith %}
+
+    {% if change==False %}
+    <p>Click this to change your username, password or email ↓</p>
+    <form action="/profile" method="post" >
+        <input type="submit" name="change" value="change profile">
+    </form>
+    {% else %}
+    <p>Change your username, password or email here.</p>
+    <form method="POST">
+        <input type="text" name="username" id="username" value="{{data['name']}}"></input>
+        <input type="password" name="password" id="password" value="{{data['password']}}"></input>
+        <input type="text" name="email" id="email" value="{{data['email']}}"></input>
+        <input type="submit" name="submit"></input>
+    </form>
+    {%endif%}
+
+</body>
+</html> -->

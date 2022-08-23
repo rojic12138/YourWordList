@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{%block title %} Logout {%endblock%}
+
+{%block content%}
+    <h1 class="header center orange-text">Logout</h1>
+
+    <p class="center light">If you are sure to logout, click 'yes'.</p>
+
+    {% with messages = get_flashed_messages() %}
+        <div class="center">{{ messages[0] }}</div>
+    {% endwith %}
+
+    <form class="center" method="POST">
+        <input class="center" type="submit" name="yes" value="yes"></input>
+    </form>
+{%endblock%}

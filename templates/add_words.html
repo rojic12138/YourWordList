@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{%block title %} Add words {%endblock%}
+{%block content%}
+    <h1 class="header center orange-text">Add words in this page!</h1>
+    <p class="center light">Remember: this website will use crawler to get information of words not collected yet. It may take a few minutes so hold your horses :) </p>
+    <p class="center caption">Besides, all the characters will be set lower. (ABanDon->abandon)</p>
+    <p class="center caption">You can add translation or annotation after "|". It can only be seen by you.</p>
+    <p class="center caption">  follow this example:</p>
+    <p class="center caption">abandon</p>
+    <p class="center caption">abandon | 放弃、抛弃</p>
+
+    <form class="center" method="POST">
+        <textarea class="center" type="text" name="lines" id="lines" style="height:300px;" ></textarea>
+        <input class="center light-blue-text" type="submit" name="submit" value="submit"></input>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        <div class="center light">{{ messages[0] }}</div>
+        <div class="center light">{{ messages[1] }}</div>
+    {% endwith %}
+{%endblock%}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>Your Word List: add words</title>
+</head>
+<body>
+    <h1 align="center">Add words in this page.</h1>
+    <p align="center">You can add Chinese translation in the end of a line. This translation can only be seen by you.</p>
+    <p align="center">  follow this example:</p>
+    <p align="center">abandon</p>
+    <p align="center">abandon 放弃、抛弃</p>
+
+    <form method="POST">
+        <textarea type="text" name="lines" id="lines" cols="5" rows="5"></textarea>
+        <input type="submit" name="submit"></input>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        <div>{{ messages[0] }}</div>
+        <div>{{ messages[1] }}</div>
+    {% endwith %}
+
+</body>
+</html> -->

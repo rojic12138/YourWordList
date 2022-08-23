@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{%block title %} Memory {%endblock%}
+{%block content%}
+<h1 class="header center orange-text"> Ready to memory words!</h1>
+    <p class="center light">How many words do you want to memory now?</p>
+
+    <form class="center" method="POST">
+        <input class="center" type="text" name="num" id="num" cols="5" rows="5"></input>
+        <input class="center light-blue-text" type="submit" name="submit" value="Go!"></input>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        <div class="center light">{{ messages[0] }}</div>
+    {% endwith %}
+{%endblock%}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>Add words</title>
+</head>
+<body>
+    <p align="center">How many words do you want to memory now?</p>
+
+    <form method="POST">
+        <input type="text" name="num" id="num" cols="5" rows="5"></input>
+        <input type="submit" name="submit"></input>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        <div>{{ messages[0] }}</div>
+    {% endwith %}
+</body>
+</html> -->

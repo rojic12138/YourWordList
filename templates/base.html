@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>{% block title %}{% endblock %} - Your Word List</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{url_for('static',filename='css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{{url_for('static',filename='css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+    <nav class="light-blue lighten-1" role="navigation">
+        <a href="https://github.com/rojic12138/YourWordList"><img loading="lazy" width="70" height="70" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149" 
+            class="right hide-on-med-and-down" alt="Fork me on GitHub" data-recalc-dims="1"></img></a>
+        <div class="nav-wrapper container">
+            <a href="/"><img src="{{url_for('static', filename='logo.png')}}" class="brand-logo" style="max-height:100%"></img></a>
+            {% block head %}
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/profile">Profile</a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/memory">Memory</a></li>
+            </ul>
+            {%endblock%}
+            
+        </div> 
+        
+    </nav>
+    {% block content %}{% endblock %}
+      <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{url_for('static',filename='js/materialize.js')}}"></script>
+  <script src="{{url_for('static',filename='js/init.js')}}"></script>
+</body>
+</html>

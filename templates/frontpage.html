@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{%block title %} Frontpage {%endblock%}
+
+
+
+{%block head %}
+    {%if logined==False %}
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/login">Login</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/register">Register</a></li>
+        </ul>
+    {%else%}
+        {{super()}}
+    {%endif%}
+{%endblock%}
+
+
+{%block content%}
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">YourWordList</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">A modern fast and efficient website for memorizing words.</h5>
+      </div>
+      <div class="row center">
+        <a href="/memory" id="download-button" class="btn-large waves-effect waves-light orange">Start to memorize!</a>
+      </div>
+      <br><br>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="section">
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Speeds up memorizing</h5>
+
+            <p class="light">No need to waste your time looking up a dictionary. -- I do it for you!</p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">Clear table for better understanding.</h5>
+            <p class="light">By utilizing elements from types of sources, I am able to create a table that displays pronunciation, meaning, example, synonyms, antonyms and hints.</p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Easy to work with</h5>
+            <p class="light">You can either follow the memory process or download pdf of words to print.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div class="section"></div>
+    </div>
+{%endblock%}
+
+<!-- <DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>Your Word List</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{url_for('static',filename='css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{{url_for('static',filename='css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container"><a src="{{url_for('static', filename='favicon.ico')}}" id="logo-container" href="frontpage.html" class="brand-logo">YWL</a>
+
+          {%if logined %}
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/profile">Profile</a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+            {%else %}
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/login">Login</a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/register">Register</a></li>
+            </ul>
+          {%endif%}
+        </div>
+      </nav>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+          <br><br>
+          <h1 class="header center orange-text">YourWordList</h1>
+          <div class="row center">
+            <h5 class="header col s12 light">A modern fast and efficient website for memorizing words.</h5>
+          </div>
+          <div class="row center">
+            <a href="/memory" id="download-button" class="btn-large waves-effect waves-light orange">Start to memorize!</a>
+          </div>
+          <br><br>
+        </div>
+      </div>
+
+    <div class="container">
+        <div class="section">
+          <div class="row">
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+                <h5 class="center">Speeds up memorizing</h5>
+    
+                <p class="light">No need to waste your time looking up a dictionary. -- I do it for you!</p>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+                <h5 class="center">Clear table for better understanding.</h5>
+                <p class="light">By utilizing elements from types of sources, I am able to create a table that displays pronunciation, meaning, example, synonyms, antonyms and hints.</p>
+              </div>
+            </div>
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+                <h5 class="center">Easy to work with</h5>
+                <p class="light">You can either follow the memory process or download pdf of words to print.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br><br>
+        <div class="section"></div>
+        </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{url_for('static',filename='js/materialize.js')}}"></script>
+  <script src="{{url_for('static',filename='js/init.js')}}"></script>
+</body>
+</html> -->
